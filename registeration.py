@@ -52,25 +52,6 @@ def confirm_pass(password_to_confirm):
             print(colored("The Password Confirmation doesn't match \U00002757 \U00002757 Please Try Again ", "red"))
 
 
-# def validate_phone_number():
-#     while True:
-#         number = ask_for_num(colored("Please Enter Your Phone Number : ","yellow"))
-
-#         if len(str(number)) == 10:
-#             return number
-#         else:
-#             print(colored("The length of Phone number must be 10 digits and start with 0 ", "red"))
-
-# def validate_phone_number():
-#     while True:
-#         number = ask_for_num(colored("Please Enter Your Phone Number : ","yellow"))
-
-#         if len(str(number)) == 11 and str(number).startswith("+01"):
-#             return number
-#         else:
-#             print(colored("The length of Phone number must be 11 digits and start with 01 ", "red"))
-
-
 def validate_phone_number():
     while True:
         number = input(colored("Please Enter Your Phone Number: ", "yellow"))
