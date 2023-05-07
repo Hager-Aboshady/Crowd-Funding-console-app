@@ -27,12 +27,12 @@ This console application is designed to allow users to create and manage crowdfu
 
 ## Technologies
     This console application was developed using Python and the following modules:
-    • uuid
-    • prettytable
+    • uuid:to generate unique identifiers that are used to create a unique ID for each created project and new user.
+    • prettytable:to display the data in a table format, making it easier to read and understand.
+    • re:to provide regular expression matching operations to search for specific patterns in the user's input
+    • getpass: to hide the password that users enter for security purposes.
+    • termcolor:to add color to the console output, making it easier to differentiate between different types of information.
     • time
-    • re
-    • getpass
-    • termcolor
     • datetime
     
 ## Installation
