@@ -5,6 +5,7 @@ from prettytable import PrettyTable
 from filesOperations import save_project
 
 
+
 def createProj():
     title=input(colored("Please Enter the Project's title : ","yellow"))
     details=input(colored("Please Enter the Project's details : ","yellow"))
@@ -47,11 +48,11 @@ def viewProjs():
         return False
 
     proj_table = PrettyTable()
-    proj_table.field_names = ['ID', 'Title', 'Details', 'Total Target', 'Start Date', 'End Date', 'Created By']
+    proj_table.field_names = ['ID', 'Title', 'Details', 'Total Target', 'Start Date', 'End Date', 'Created By','Timestamp']
 
     for line in projFile:
         proj = line.strip().split(':')
-        proj_table.add_row([proj[0], proj[1], proj[2], proj[3], proj[4], proj[5], proj[6]])
+        proj_table.add_row([proj[0], proj[1], proj[2], proj[3], proj[4], proj[5], proj[6],proj[7]])
 
     print(proj_table)
 
@@ -117,23 +118,43 @@ def editProj():
 
 
 
+# def search_using_time():
+#     while True:
+#         time_id = ask_for_num("Please Enter the time you want to search by or 0 to Exit \U0001F55B : ")
+#         if str(time_id)!="0":
+#             allProj = getProjs()
+
+#             for proj in allProj:
+#                 if str(time_id) == proj.strip("\n").split(':')[7]:
+#                     print(colored("--------Search Results-------\U0001F440", "green"))
+#                     print(colored(proj, "blue"))
+#                     break
+#                 else:
+#                     print(colored("--------Search Results------- \U0001F440", "green"))
+#                     print(colored("This Project doesn't exist \U0001F625", "red"))
+#                     break
+
+#         else:
+#             break        
+
+
+
 def search_using_time():
     while True:
         time_id = ask_for_num("Please Enter the time you want to search by or 0 to Exit \U0001F55B : ")
-        if time_id!="0":
+        if str(time_id) != "0":
             allProj = getProjs()
 
+            # create the table and set column headers
+            table = PrettyTable()
+            table.field_names = ["ID", "Title", "Details", "Target", "Current", "Status", "Creator", "Time"]
+
+            # add rows to the table for each project matching the search criteria
+            found = False
             for proj in allProj:
-                if str(time_id) == proj.strip("\n").split(':')[7]:
-                    print(colored("--------Search Results-------\U0001F440", "green"))
-                    print(colored(proj, "blue"))
-                    break
-                else:
-                    print(colored("--------Search Results------- \U0001F440", "green"))
-                    print(colored("This Project doesn't exist \U0001F625", "red"))
-                    break
-
+                proj_data = proj.strip("\n").split(':')
+                if str(time_id) == proj_data[7]:
+                    found = True
+                    table.add_row(proj_data)
         else:
-            break        
-
-
+            break
